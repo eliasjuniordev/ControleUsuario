@@ -1,0 +1,53 @@
+<div class="container mt-5">
+    <button class="btn btn-success w-100">Cadastrar novo usuário</button>
+    <div>
+        <label class="form-label"></label>
+        <input class="form-control" type="text" placeholder="Pesquisar usuário" (input)="search($event)"/>
+    </div>
+    <table class="table table-hover table-bordered mt-5">
+        <thead class="table-dark">
+            <tr>
+                <th>Id</th>
+                <th>Nome</th>
+                <th>E-mail</th>
+                <th>Cargo</th>
+                <th>Salário</th>
+                <th>Situação</th>
+                <th></th>
+            </tr>  
+
+        </thead>
+        <tbody>
+           
+                @if(usuarios.length > 0)
+                { @for (usuario of usuarios; track $index) 
+                    {   
+                        <tr>
+                            <td>{{usuario.id}}</td>
+                            <td>{{usuario.nome}}</td>
+                            <td>{{usuario.email}}</td>
+                            <td>{{usuario.cargo}}</td>
+                            <td>{{usuario.salario}}</td>
+                            <td>{{usuario.situacao == true ? "Ativo":"Inativo"}}</td>
+                            <td style="width: 100px; text-align: center;">
+                                <div class="d-flex justify-content-center gap-2">
+                                    <button class="btn btn-warning btn-sm">Editar</button>
+                                    <button class="btn btn-warning btn-sm">Detalhes</button>
+                                    <button class="btn btn-danger btn-sm" (click)="deletar(usuario.id)">Excluir</button>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                }@else {
+                    <tr>
+                        <td colspan="7" class="text-center">Nenhum usuário </td>
+                    </tr>
+                }
+                
+                
+      
+        </tbody>
+
+    </table>
+
+</div>
