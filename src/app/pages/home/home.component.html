@@ -1,5 +1,5 @@
 <div class="container mt-5">
-    <button class="btn btn-success w-100">Cadastrar novo usuário</button>
+    <button class="btn btn-success w-100" [routerLink]="['/cadastro']" routerLinkActive="router-link-active" >Cadastrar novo usuário</button>
     <div>
         <label class="form-label"></label>
         <input class="form-control" type="text" placeholder="Pesquisar usuário" (input)="search($event)"/>
@@ -31,8 +31,8 @@
                             <td>{{usuario.situacao == true ? "Ativo":"Inativo"}}</td>
                             <td style="width: 100px; text-align: center;">
                                 <div class="d-flex justify-content-center gap-2">
-                                    <button class="btn btn-warning btn-sm">Editar</button>
-                                    <button class="btn btn-warning btn-sm">Detalhes</button>
+                                    <button class="btn btn-warning btn-sm" [routerLink]="['/editar',usuario.id]" >Editar</button>
+                                    <button class="btn btn-warning btn-sm" [routerLink]="['/detalhes',usuario.id]">Detalhes</button>
                                     <button class="btn btn-danger btn-sm" (click)="deletar(usuario.id)">Excluir</button>
                                 </div>
                             </td>
